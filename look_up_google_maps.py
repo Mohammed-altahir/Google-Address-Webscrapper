@@ -2,9 +2,11 @@
 # from google maps and save it in txt file
 # let us start now
 import json
+
 from time import sleep
 from selenium import webdriver
 from extract_addresses import extract_addresses
+from store_into_a_database import storeInADatabase
 def look_up_google_maps():
     queries = extract_addresses()
     # [{"name":"John Doe","address":"Empire State Building","google_maps_address":""},{"name":"Jane Doe","address":"Flatiron Building","google_maps_address":""}]
@@ -26,3 +28,4 @@ results = look_up_google_maps()
 with open('./results.json','w+') as result:
     result.writelines(json.dumps(results))
 print(results)
+storeInADatabase()
